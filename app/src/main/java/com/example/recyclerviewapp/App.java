@@ -1,17 +1,19 @@
 package com.example.recyclerviewapp;
 
+import android.graphics.drawable.Drawable;
+
 public class App
 {
     private String name, pack, version, codeVersion;
-    private int image;
+    private Drawable image;
 
     public String getName() { return name; }
     public String getPack() { return pack; }
     public String getVersion() { return version; }
     public String getCodeVersion() { return codeVersion; }
-    public int getImage() { return image; }
+    public Drawable getImage() { return image; }
 
-    public App(String name, String pack, String version, String codeVersion, int image)
+    public App(String name, String pack, String version, String codeVersion, Drawable image)
     {
         this.name = name;
         this.pack = pack;

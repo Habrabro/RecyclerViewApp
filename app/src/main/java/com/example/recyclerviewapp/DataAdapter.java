@@ -30,7 +30,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
     public void onBindViewHolder(DataAdapter.ViewHolder holder, int position)
     {
         App app = apps.get(position);
-        holder.ivIconView.setImageResource(app.getImage());
+        holder.ivIconView.setImageDrawable(app.getImage());
         holder.tvNameView.setText(app.getName());
         holder.tvPackageView.setText(app.getPack());
     }
