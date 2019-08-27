@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity implements DataAdapter.DataA
     }
 
     @Override
-    public void OnViewHolderClick(DataAdapter.ViewHolder viewHolder, View view)
+    public void OnViewHolderClick(int position)
     {
         Bundle bundle = new Bundle();
-        bundle.putInt("AdapterPosition", viewHolder.getAdapterPosition());
+        bundle.putString("Package", apps.get(position).getPack());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         DetailsDialogFragment dialog = new DetailsDialogFragment();

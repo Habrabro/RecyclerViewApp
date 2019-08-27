@@ -12,19 +12,24 @@ import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.pm.PackageManager;
-import java.util.List;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailsDialogFragment extends DialogFragment
 {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
+        Bundle bundle = getArguments();
+        String packageName = bundle.getString("Package");
         PackageManager packageManager = getActivity().getPackageManager();
-        List<PackageInfo> installedApps = packageManager.getInstalledPackages(0);
-        int adapterPosition = getArguments().getInt("AdapterPosition");
-        PackageInfo packageInfo = installedApps.get(adapterPosition);
+        PackageInfo packageInfo = null;
+        try { packageInfo = packageManager.getPackageInfo(packageName, 0); }
+        catch (PackageManager.NameNotFoundException ex)
+        {
+            Toast.makeText(getContext(), "App not found", Toast.LENGTH_LONG).show();
+        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -38,7 +43,6 @@ public class DetailsDialogFragment extends DialogFragment
         TextView tvVersionCodeDialogView = view.findViewById(R.id.tvCodeVersionDialog);
 
         String name = packageInfo.applicationInfo.loadLabel(packageManager).toString();
-        String packageName = packageInfo.packageName;
         String version = getResources().getString(R.string.text_detailsDialogVersionPrefix) + " " + packageInfo.versionName;
         String codeVersion = Long.toString((int)(PackageInfoCompat.getLongVersionCode(packageInfo) & 0x00000000ffffffff));
         Drawable icon = packageInfo.applicationInfo.loadIcon(packageManager);

@@ -49,7 +49,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
 
     public interface DataAdapterListener
     {
-        void OnViewHolderClick(ViewHolder viewHolder, View view);
+        void OnViewHolderClick(int position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -71,7 +71,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
         @Override
         public void onClick(View view)
         {
-            listener.OnViewHolderClick(this, view);
+            listener.OnViewHolderClick(getAdapterPosition());
         }
     }
 }
