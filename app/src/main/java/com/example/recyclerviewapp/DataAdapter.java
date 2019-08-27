@@ -1,16 +1,12 @@
 package com.example.recyclerviewapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,14 +14,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>
 {
     private LayoutInflater inflater;
     private List<App> apps;
-    Context context;
-    DataAdapterListener listener;
+    private DataAdapterListener listener;
 
     DataAdapter(Context context, List<App> apps)
     {
         this.apps = apps;
         this.inflater = LayoutInflater.from(context);
-        this.context = context;
         if (context instanceof DataAdapterListener)
         {
             listener = (DataAdapterListener)context;

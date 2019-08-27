@@ -1,18 +1,14 @@
 package com.example.recyclerviewapp;
 
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Dialog;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.pm.PackageInfoCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.pm.PackageManager;
